@@ -12,7 +12,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	var tableModel = [FeedImageCellController]() {
-		didSet { tableView.reloadData() }
+		didSet {
+            errorView.isHidden = true
+            tableView.reloadData()
+        }
 	}
 
 	public override func viewDidLoad() {
@@ -34,7 +37,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
-        
+                        
         viewModel?.onFeedLoadFails = { [weak self] error in
             self?.errorView.isHidden = false
         }
