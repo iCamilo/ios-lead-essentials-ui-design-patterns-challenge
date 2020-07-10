@@ -306,6 +306,18 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertTrue(sut.isShowingErrorIndicator, "Error indicator should be shown at feed view load if feed load fails with error")
     }
     
+    func test_feedLoadFailsWithError_userInitiatedReload_showErrorIndicator() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        loader.completeFeedLoading()
+        XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at user initiated load if feed load succeeds")
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        XCTAssertTrue(sut.isShowingErrorIndicator, "Error indicator should be shown at user initiated refresh if feed load fails with error")
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
