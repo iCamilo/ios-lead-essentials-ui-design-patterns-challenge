@@ -5,7 +5,9 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	var viewModel: FeedViewModel? {
+    public let errorView = UIView()
+    
+    var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
 	
@@ -15,7 +17,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        errorView.isHidden = true
+        
 		refresh()
 	}
 	
