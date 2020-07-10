@@ -281,20 +281,12 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
     
-    func test_feedView_doesNotShowErrorIndicatorAtFeedLoadSucceeds() {
+    func test_feedViewLoad_doesNotShowErrorIndicatorAtFeedLoadSucceeds() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
         loader.completeFeedLoading()
-        XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at feed view load if feed load succeeds")
-        
-        sut.simulateUserInitiatedFeedReload()
-        loader.completeFeedLoading(with: [], at: 1)
-        XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at user initiated load if feed load succeeds")
-        
-        sut.simulateUserInitiatedFeedReload()
-        loader.completeFeedLoading(with: [], at: 2)
-        XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at user initiated load if feed load succeeds")
+        XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at feed view load if feed load succeeds")                
     }
     
     func test_feeViewLoad_showErrorIndicatorIfFeedLoadFailsWithError() {
@@ -305,19 +297,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         XCTAssertTrue(sut.isShowingErrorIndicator, "Error indicator should be shown at feed view load if feed load fails with error")
     }
-    
-    func test_userInitiatedReload_showErrorIndicatorIfFeedLoadFailsWithError() {
-        let (sut, loader) = makeSUT()
-        sut.loadViewIfNeeded()
-
-        loader.completeFeedLoading()
-        XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at user initiated load if feed load succeeds")
         
-        sut.simulateUserInitiatedFeedReload()
-        loader.completeFeedLoadingWithError(at: 1)
-        XCTAssertTrue(sut.isShowingErrorIndicator, "Error indicator should be shown at user initiated refresh if feed load fails with error")
-    }
-    
     func test_errorIndicator_showsHidesIfUserInitiatedReloadFailsSuceeds() {
         let (sut, loader) = makeSUT()
         sut.loadViewIfNeeded()
