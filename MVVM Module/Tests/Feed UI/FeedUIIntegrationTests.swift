@@ -297,6 +297,15 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertFalse(sut.isShowingErrorIndicator, "Error indicator should not be shown at user initiated load if feed load succeeds")
     }
     
+    func test_feedLoadFailsWithError_feeViewLoad_showErrorIndicator() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        
+        XCTAssertTrue(sut.isShowingErrorIndicator, "Error indicator should be shown at feed view load if feed load fails with error")
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {

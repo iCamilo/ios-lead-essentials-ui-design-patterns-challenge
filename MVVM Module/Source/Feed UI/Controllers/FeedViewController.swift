@@ -34,6 +34,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+        
+        viewModel?.onFeedLoadFails = { [weak self] error in
+            self?.errorView.isHidden = false
+        }
 	}
 
 	public override func viewDidLayoutSubviews() {
