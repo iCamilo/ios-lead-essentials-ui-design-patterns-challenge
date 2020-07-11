@@ -5,7 +5,7 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    public let errorView = UIView()
+    @IBOutlet public private(set) var errorView: ErrorView!
     
     var viewModel: FeedViewModel? {
 		didSet { bind() }
@@ -13,14 +13,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	var tableModel = [FeedImageCellController]() {
 		didSet {
-            errorView.isHidden = true
+            errorView.hideMessage()
             tableView.reloadData()
         }
 	}
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-        errorView.isHidden = true
         
 		refresh()
 	}
@@ -39,14 +38,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
                         
         viewModel?.onFeedLoadFails = { [weak self] error in
-            self?.errorView.isHidden = false
+            self?.errorView.show(message: "There was an error tyry again")
         }
-	}
-
-	public override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		tableView.sizeTableHeaderToFit()
 	}
 	
 	public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
