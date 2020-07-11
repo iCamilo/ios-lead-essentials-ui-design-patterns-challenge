@@ -6,7 +6,8 @@ import UIKit
 
 @IBDesignable
 public final class ErrorView: UIView {
-	@IBOutlet private var label: UILabel!
+	@IBOutlet private var label: UILabel!    
+    @IBOutlet private var container: UIView!
 	
 	public var message: String? {
 		get { return isVisible ? label.text : nil }
@@ -52,9 +53,9 @@ public final class ErrorView: UIView {
 	}
     
     private func addRounderBorderColor() {
-        layer.cornerRadius = 5
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.cayenne.cgColor        
+        container.layer.cornerRadius = 5
+        container.layer.borderWidth = 2
+        container.layer.borderColor = UIColor.cayenne.cgColor        
     }
 }
 
