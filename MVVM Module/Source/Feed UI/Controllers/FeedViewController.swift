@@ -13,7 +13,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	var tableModel = [FeedImageCellController]() {
 		didSet {
-            errorView.hideMessage()
             tableView.reloadData()
         }
 	}
@@ -31,6 +30,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	func bind() {
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			if isLoading {
+                self?.errorView.hideMessage()
 				self?.refreshControl?.beginRefreshing()
 			} else {
 				self?.refreshControl?.endRefreshing()
