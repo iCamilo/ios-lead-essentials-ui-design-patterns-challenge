@@ -29,10 +29,8 @@ final class FeedPresenter {
 	}
 
 	static var title: String {
-		return NSLocalizedString("FEED_VIEW_TITLE",
-			tableName: "Feed",
-			bundle: Bundle(for: FeedPresenter.self),
-			comment: "Title for the feed view")
+        return Self.localize("FEED_VIEW_TITLE",			
+                             comment: "Title for the feed view")
 	}
     
 	func didStartLoadingFeed() {
@@ -45,12 +43,17 @@ final class FeedPresenter {
 	}
 	
 	func didFinishLoadingFeed(with error: Error) {
-        let message = NSLocalizedString("LOADING_FEED_ERROR_MESSAGE",
-                                        tableName: "Feed",
-                                        bundle: Bundle(for: FeedPresenter.self),
-                                        comment: "Error message when feed load fails")
+        let errorMessage = Self.localize("LOADING_FEED_ERROR_MESSAGE",
+                                    comment: "Error message when feed load fails")
         
         loadingView.display(FeedLoadingViewModel(isLoading: false))
-        errorView.display(FeedErrorViewModel(message: message))
+        errorView.display(FeedErrorViewModel(message: errorMessage))
 	}
+    
+    private static func localize(_ key: String, comment: String) -> String {
+        return NSLocalizedString(key,
+                                 tableName: "Feed",
+                                 bundle: Bundle(for: FeedPresenter.self),
+                                 comment: comment)
+    }
 }
