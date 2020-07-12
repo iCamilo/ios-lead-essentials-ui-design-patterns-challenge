@@ -30,8 +30,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
 			refreshControl?.beginRefreshing()
-		} else {
             errorView.isHidden = true
+		} else {
 			refreshControl?.endRefreshing()
 		}
 	}
