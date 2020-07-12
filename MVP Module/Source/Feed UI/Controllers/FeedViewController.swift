@@ -31,6 +31,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		if viewModel.isLoading {
 			refreshControl?.beginRefreshing()
 		} else {
+            errorView.isHidden = true
 			refreshControl?.endRefreshing()
 		}
 	}
