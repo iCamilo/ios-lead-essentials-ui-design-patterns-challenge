@@ -48,6 +48,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottomMargin" secondItem="dTW-zS-Muf" secondAttribute="bottom" constant="5" id="6li-qP-xzG"/>
                 <constraint firstItem="egv-nb-N5d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="1" id="7ug-Is-a3D"/>
@@ -59,8 +60,16 @@
                 <constraint firstItem="dTW-zS-Muf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="5" id="xI6-o2-2XH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="ad1-rx-dZr" appends="YES" id="4AK-yJ-Nmf"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="157.36607142857142"/>
         </view>
+        <tapGestureRecognizer id="ad1-rx-dZr">
+            <connections>
+                <action selector="hideMessage" destination="-1" id="P2q-aT-B29"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="errorSign" width="128" height="128"/>
