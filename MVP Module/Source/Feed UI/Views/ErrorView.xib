@@ -21,6 +21,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egv-nb-N5d" userLabel="ContainerView">
                     <rect key="frame" x="21" y="45" width="372" height="286"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <gestureRecognizers/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dTW-zS-Muf" userLabel="MessageContainer">
                     <rect key="frame" x="40" y="49" width="334" height="278"/>
@@ -48,6 +49,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottomMargin" secondItem="dTW-zS-Muf" secondAttribute="bottom" constant="5" id="6li-qP-xzG"/>
                 <constraint firstItem="egv-nb-N5d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="1" id="7ug-Is-a3D"/>
@@ -59,8 +61,16 @@
                 <constraint firstItem="dTW-zS-Muf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="5" id="xI6-o2-2XH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="czQ-pF-wow" appends="YES" id="QBw-Js-ukJ"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="157.36607142857142"/>
         </view>
+        <tapGestureRecognizer id="czQ-pF-wow">
+            <connections>
+                <action selector="hideMessage" destination="-1" id="wAi-RY-f2g"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="error" width="128" height="128"/>
