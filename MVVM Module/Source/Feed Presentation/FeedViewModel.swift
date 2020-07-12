@@ -14,20 +14,16 @@ final class FeedViewModel {
 		self.feedLoader = feedLoader
 	}
 	
-	var title: String {
-		return NSLocalizedString("FEED_VIEW_TITLE",
-			tableName: "Feed",
-			bundle: Bundle(for: FeedViewModel.self),
-			comment: "Title for the feed view")
-	}
+    var title: String {
+        localized("FEED_VIEW_TITLE",
+                  comment: "Title for the feed view")
+    }
     
     var loadingFeedErrorMessage: String {
-        return NSLocalizedString("LOADING_FEED_ERROR_MESSAGE",
-                                 tableName: "Feed",
-                                 bundle: Bundle(for: FeedViewModel.self),
-                                 comment: "Error message when feed loading fails")
+        localized("LOADING_FEED_ERROR_MESSAGE",
+                  comment: "Error message when feed loading fails")
     }
-
+    
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
     var onFeedLoadFails: Observer<Error>?
@@ -44,5 +40,11 @@ final class FeedViewModel {
 			self?.onLoadingStateChange?(false)
 		}
 	}
+    
+    private func localized(_ key: String, comment: String) -> String {
+        return NSLocalizedString(key,
+                                 tableName: "Feed",
+                                 bundle: Bundle(for: FeedViewModel.self),
+                                 comment: comment)
+    }
 }
-
