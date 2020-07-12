@@ -20,6 +20,13 @@ final class FeedViewModel {
 			bundle: Bundle(for: FeedViewModel.self),
 			comment: "Title for the feed view")
 	}
+    
+    var loadingFeedErrorMessage: String {
+        return NSLocalizedString("LOADING_FEED_ERROR_MESSAGE",
+                                 tableName: "Feed",
+                                 bundle: Bundle(for: FeedViewModel.self),
+                                 comment: "Error message when feed loading fails")
+    }
 
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?

@@ -38,7 +38,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
                         
         viewModel?.onFeedLoadFails = { [weak self] error in
-            self?.errorView.show(message: "There was an error tyry again")
+            self?.errorView.show(message: (self?.viewModel?.loadingFeedErrorMessage)!)
         }
 	}
 	
