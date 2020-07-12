@@ -119,6 +119,7 @@
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
 		5BEE189C24BAA1D30099D9BE /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE189A24BAA0C20099D9BE /* ErrorView.xib */; };
 		5BEE189D24BAA3630099D9BE /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082072E52322D1B700759471 /* ErrorView.swift */; };
+		5BEE18A024BAACDB0099D9BE /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE189E24BAACC40099D9BE /* FeedErrorViewModel.swift */; };
 		5BFDE29024B94C2C004AD7D8 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B37C08624B9352500318CBC /* ErrorView.xib */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +320,7 @@
 		5B37C08624B9352500318CBC /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		5BEE189924BA98180099D9BE /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
 		5BEE189A24BAA0C20099D9BE /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		5BEE189E24BAACC40099D9BE /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -835,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				08F3B6AA2322585E00510CE7 /* FeedPresenter.swift */,
+				5BEE189E24BAACC40099D9BE /* FeedErrorViewModel.swift */,
 				08F3B6AB2322585E00510CE7 /* FeedImageViewModel.swift */,
 				08F3B6AC2322585E00510CE7 /* FeedLoadingViewModel.swift */,
 				08F3B6AE2322585E00510CE7 /* FeedImagePresenter.swift */,
@@ -1362,6 +1365,7 @@
 				08F3B6B32322585E00510CE7 /* WeakRefVirtualProxy.swift in Sources */,
 				08F3B6B02322585E00510CE7 /* FeedViewAdapter.swift in Sources */,
 				08F3B6BC2322585E00510CE7 /* UIView+Shimmering.swift in Sources */,
+				5BEE18A024BAACDB0099D9BE /* FeedErrorViewModel.swift in Sources */,
 				08F3B6B72322585E00510CE7 /* FeedViewController.swift in Sources */,
 				08F3B6B42322585E00510CE7 /* FeedUIComposer.swift in Sources */,
 			);
