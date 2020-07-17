@@ -28,14 +28,30 @@
                                             <color key="textColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VJ-mW-D2f" userLabel="dismissButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="396" height="29"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="0.58039215690000001" green="0.066666666669999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="hideMessage" destination="4LE-HN-Qlx" eventType="touchUpInside" id="8ET-Em-XnU"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="IRk-6X-MRu" firstAttribute="leading" secondItem="zXj-81-0Js" secondAttribute="leading" constant="2" id="1lb-8a-fgo"/>
+                                        <constraint firstItem="4VJ-mW-D2f" firstAttribute="top" secondItem="zXj-81-0Js" secondAttribute="top" id="4Gl-7k-SJd"/>
+                                        <constraint firstItem="4VJ-mW-D2f" firstAttribute="leading" secondItem="zXj-81-0Js" secondAttribute="leading" id="5yN-R1-cAV"/>
                                         <constraint firstAttribute="bottom" secondItem="IRk-6X-MRu" secondAttribute="bottom" constant="5" id="81M-6l-kf4"/>
                                         <constraint firstAttribute="trailing" secondItem="IRk-6X-MRu" secondAttribute="trailing" constant="2" id="FwD-Tl-XGf"/>
                                         <constraint firstItem="IRk-6X-MRu" firstAttribute="top" secondItem="zXj-81-0Js" secondAttribute="top" constant="5" id="dIB-eb-eiF"/>
+                                        <constraint firstAttribute="bottom" secondItem="4VJ-mW-D2f" secondAttribute="bottom" id="l4z-0d-rUw"/>
+                                        <constraint firstAttribute="trailing" secondItem="4VJ-mW-D2f" secondAttribute="trailing" id="zWF-6G-Fo0"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -48,6 +64,7 @@
                             </constraints>
                             <connections>
                                 <outlet property="container" destination="zXj-81-0Js" id="54V-DQ-IeS"/>
+                                <outlet property="dismiss" destination="4VJ-mW-D2f" id="zKn-t3-EHy"/>
                                 <outlet property="label" destination="IRk-6X-MRu" id="8tv-k9-HwK"/>
                             </connections>
                         </view>

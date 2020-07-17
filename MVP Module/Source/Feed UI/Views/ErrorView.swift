@@ -7,6 +7,7 @@ import UIKit
 public final class ErrorView: UIView {
     @IBOutlet private var container: UIView!
 	@IBOutlet private var label: UILabel!
+    @IBOutlet public private(set) var dismiss: UIButton!
     
 	public var message: String? {
 		get { return isVisible ? label.text : nil }

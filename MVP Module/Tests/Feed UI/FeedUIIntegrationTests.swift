@@ -340,6 +340,27 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         assertIsShowingErrorIndicator(sut, "Expected error indicator to show localized message")
     }
+    
+    func test_errorIndicator_tappingOnItDismissIt() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown as the feed load did fail")
+        
+        sut.simulateTappingErroIndicator()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should be dismissed after tapping the error indicator")
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown as the feed re-load did fail")
+        
+        sut.simulateTappingErroIndicator()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should be dismissed after tapping the error indicator")
+        
+        sut.simulateTappingErroIndicator()
+        assertIsNotShowingErrorIndicator(sut, "Tapping should not have any effect as the error indicator was not shown")
+    }
 	
 	// MARK: - Helpers
 	

@@ -47,6 +47,10 @@ extension FeedViewController {
     var errorIndicatorMessage: String? {
         return errorView.message
     }
+    
+    func simulateTappingErroIndicator() {
+        errorView.dismiss.simulate(event: .touchUpInside)
+    }
 	
 	func numberOfRenderedFeedImageViews() -> Int {
 		return tableView.numberOfRows(inSection: feedImagesSection)
