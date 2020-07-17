@@ -93,3 +93,6 @@ fastlane/test_output
 
 # End of https://www.gitignore.io/api/swift,xcode
 /.DS_Store
+/MVP Module/.DS_Store
+/MVP Module/Tests/.DS_Store
+/MVP Module/Tests/Feed UI/.DS_Store
