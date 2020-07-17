@@ -43,11 +43,7 @@ extension FeedViewController {
 	var isShowingLoadingIndicator: Bool {
 		return refreshControl?.isRefreshing == true
 	}
-    
-    var isShowingErrorIndicator: Bool {
-        return errorView.message != nil
-    }
-    
+            
     var errorIndicatorMessage: String? {
         return errorView.message
     }
