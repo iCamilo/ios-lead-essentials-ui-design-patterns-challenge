@@ -49,7 +49,7 @@ extension FeedViewController {
     }
     
     func simulateTappingErroIndicator() {
-        errorView.dismiss.simulate(event: .touchUpInside)
+        errorView.label.simulateTap()
     }
 	
 	func numberOfRenderedFeedImageViews() -> Int {
