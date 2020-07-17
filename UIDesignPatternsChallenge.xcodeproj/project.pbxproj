@@ -119,7 +119,6 @@
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
 		5BEE189D24BAA3630099D9BE /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082072E52322D1B700759471 /* ErrorView.swift */; };
 		5BEE18A024BAACDB0099D9BE /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE189E24BAACC40099D9BE /* FeedErrorViewModel.swift */; };
-		5BFDE29024B94C2C004AD7D8 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B37C08624B9352500318CBC /* ErrorView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,7 +315,6 @@
 		08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
-		5B37C08624B9352500318CBC /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		5BEE189924BA98180099D9BE /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
 		5BEE189E24BAACC40099D9BE /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		5BEE18A124BAAE3A0099D9BE /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
@@ -701,7 +699,6 @@
 				08F3B6392322564500510CE7 /* FeedImageCell.swift */,
 				082072E02322D13000759471 /* ErrorView.swift */,
 				08F3B63A2322564500510CE7 /* Feed.storyboard */,
-				5B37C08624B9352500318CBC /* ErrorView.xib */,
 				08F3B63C2322564500510CE7 /* Feed.xcassets */,
 			);
 			path = Views;
@@ -1206,7 +1203,6 @@
 				08F3B64A2322564500510CE7 /* Feed.storyboard in Resources */,
 				08F3B64C2322564500510CE7 /* Feed.xcassets in Resources */,
 				08F3B64D2322564500510CE7 /* Feed.strings in Resources */,
-				5BFDE29024B94C2C004AD7D8 /* ErrorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
