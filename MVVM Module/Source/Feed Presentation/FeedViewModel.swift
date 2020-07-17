@@ -30,6 +30,8 @@ final class FeedViewModel {
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
+        onFeedLoadFails?(nil)
+        
 		feedLoader.load { [weak self] result in
             do {
                 let feed = try result.get()
