@@ -5,17 +5,21 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	var viewModel: FeedViewModel? {
+    @IBOutlet public private(set) var errorView: ErrorView!
+    
+    var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
 	
 	var tableModel = [FeedImageCellController]() {
-		didSet { tableView.reloadData() }
+		didSet {
+            tableView.reloadData()
+        }
 	}
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
 		refresh()
 	}
 	
@@ -31,14 +35,22 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
-	}
-
-	public override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		tableView.sizeTableHeaderToFit()
+                        
+        viewModel?.onFeedLoadFails = { [weak self] errorMessage in
+            if let errorMessage = errorMessage {
+                self?.errorView.show(message: errorMessage)
+            } else {
+                self?.errorView.hideMessage()
+            }
+        }
 	}
 	
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        tableView.sizeTableHeaderToFit()
+    }
+    
 	public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return tableModel.count
 	}

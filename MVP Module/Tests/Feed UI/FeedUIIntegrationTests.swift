@@ -280,6 +280,87 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+    
+    func test_feedViewLoad_doesNotShowErrorIndicatorAtViewInit() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should not show at view init")
+    }
+    
+    func test_feedViewLoad_doesNotShowErrorIndicatorAtFeedLoadSucceeds() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should not be shown at feed view load if feed load succeeds")
+    }
+    
+    func test_feeViewLoad_showErrorIndicatorIfFeedLoadFailsWithError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown at feed view load if feed load fails with error")
+    }
+    
+    func test_errorIndicator_showsHidesIfUserInitiatedReloadFailsSucceeds() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        loader.completeFeedLoading()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should not be shown as feed load suceed")
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown as the reload did fail")
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoading(with: [], at: 2)
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should not be shown as the reload did succeed")
+    }
+    
+    func test_errorIndicator_hidesAsSoonAsUserInitiatiesReloadAndBeforeItCompletes() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown as feed load didFail")
+        
+        sut.simulateUserInitiatedFeedReload()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should be hidden as a reload is initiated and not wait until load completes")
+    }
+    
+    func test_errorIndicator_hasMessage() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        
+        assertIsShowingErrorIndicator(sut, "Expected error indicator to show localized message")
+    }
+    
+    func test_errorIndicator_tappingOnItDismissIt() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown as the feed load did fail")
+        
+        sut.simulateTappingErroIndicator()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should be dismissed after tapping the error indicator")
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        assertIsShowingErrorIndicator(sut, "Error indicator should be shown as the feed re-load did fail")
+        
+        sut.simulateTappingErroIndicator()
+        assertIsNotShowingErrorIndicator(sut, "Error indicator should be dismissed after tapping the error indicator")
+        
+        sut.simulateTappingErroIndicator()
+        assertIsNotShowingErrorIndicator(sut, "Tapping should not have any effect as the error indicator was not shown")
+    }
 	
 	// MARK: - Helpers
 	
@@ -298,4 +379,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+    
+    private func assertIsNotShowingErrorIndicator(_ sut: FeedViewController, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
+        XCTAssertNil(sut.errorIndicatorMessage, message, file: file, line: line)
+    }
+    
+    private func assertIsShowingErrorIndicator(_ sut: FeedViewController, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
+        let errorMessageKey = "LOADING_FEED_ERROR_MESSAGE"
+        
+        XCTAssertEqual(sut.errorIndicatorMessage, localized(errorMessageKey), message, file: file, line: line)
+    }
 }
